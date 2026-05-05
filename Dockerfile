@@ -1,6 +1,6 @@
-FROM vastai/comfy:latest
+FROM robatvastai/comfyui:v0.3.47-cuda-12.8-py312-24.04
 
-# Everything else stays the same
+# Install custom nodes
 RUN cd /comfyui/custom_nodes && \
   git clone https://github.com/kijai/ComfyUI-WanVideoWrapper && \
   git clone https://github.com/kijai/ComfyUI-LTXVideo && \
