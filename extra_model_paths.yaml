@@ -1,0 +1,13 @@
+vastai_worker_comfy:
+  base_path: /runpod-volume/ComfyUI/
+  checkpoints: models/checkpoints/
+  loras: models/loras/
+  vae: models/vae/
+  text_encoders: models/text_encoders/
+  diffusion_models: models/diffusion_models/
+  controlnet: models/controlnet/
+  ipadapter: models/ipadapter/
+  clip: models/clip/
+  clip_vision: models/clip_vision/
+  unet: models/unet/
+  upscale_models: models/upscale_models/
