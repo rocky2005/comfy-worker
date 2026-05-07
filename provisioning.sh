@@ -6,6 +6,18 @@
 
 set -euo pipefail
 
+# ── Fix system clock (prevents SSL certificate errors) ────────────────────────
+echo "Syncing system clock..."
+apt-get install -y --no-install-recommends ntpdate > /dev/null 2>&1 || true
+ntpdate -u time.google.com > /dev/null 2>&1 || \
+ntpdate -u pool.ntp.org > /dev/null 2>&1 || \
+timedatectl set-ntp true > /dev/null 2>&1 || true
+echo "Clock synced"
+
+# Update CA certificates
+apt-get install -y --no-install-recommends ca-certificates > /dev/null 2>&1 || true
+update-ca-certificates > /dev/null 2>&1 || true
+
 WORKSPACE_DIR="${WORKSPACE:-/workspace}"
 COMFYUI_DIR="${WORKSPACE_DIR}/ComfyUI"
 NODES_DIR="${COMFYUI_DIR}/custom_nodes"
