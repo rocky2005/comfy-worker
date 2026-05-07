@@ -19,12 +19,17 @@ RUN pip install hf_transfer huggingface_hub --no-cache-dir
 
 # ── Custom Nodes ──────────────────────────────────────────────────────────────
 
+# Prevent git from prompting for credentials on missing repos
+ENV GIT_TERMINAL_PROMPT=0
+
+# ── Custom Nodes ──────────────────────────────────────────────────────────────
+
 RUN cd /comfyui/custom_nodes && \
     git clone --depth 1 https://github.com/kijai/ComfyUI-WanVideoWrapper && \
     git clone --depth 1 https://github.com/kijai/ComfyUI-WanAnimatePreprocess && \
     git clone --depth 1 https://github.com/kijai/ComfyUI-SCAIL-pose && \
     git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite && \
-    git clone --depth 1 https://github.com/kijai/ComfyUI-LTXVideo && \
+    git clone --depth 1 https://github.com/Lightricks/ComfyUI-LTXVideo && \
     echo "Group 1 done"
 
 RUN cd /comfyui/custom_nodes && \
